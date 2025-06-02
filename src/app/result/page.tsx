@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ScoreComment } from '@/components/ScoreComment';
 import { NameInputModal } from '@/components/NameInputModal';
 import { isTop10, saveRanking } from '@/utils/ranking';
 
-export default function Result() {
+function ResultContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [showNameModal, setShowNameModal] = useState(false);
@@ -59,5 +59,13 @@ export default function Result() {
         onSubmit={handleNameSubmit}
       />
     </main>
+  );
+}
+
+export default function Result() {
+  return (
+    <Suspense>
+      <ResultContent />
+    </Suspense>
   );
 } 

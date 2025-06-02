@@ -1,4 +1,4 @@
-import { ScoreEvaluation, evaluateScore } from '@/utils/score';
+import { evaluateScore } from '@/utils/score';
 
 type ScoreCommentProps = {
   score: number;
